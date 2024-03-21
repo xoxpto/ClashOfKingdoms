@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+/* game settings */
+.setting-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: 500px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(30px);
+    background-color: rgba(29, 29, 29, 0.8);
+    border-radius: 50px;
+}
+
+.selection-box p {
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 45px;
+    letter-spacing: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* selecionar modo de jogo */
+#game-mode .selection div {
+    color: #fff;
+    text-align: center;
+    border-radius:20px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgba(70, 214, 38, 0.4);
+}
+
+#game-mode .selection div:last-child {
+    background-color: rgba(70, 214, 38, 0.4);
+}
+
+/* Selecionar cor das peças */
+
+#piece-color .selection img {
+    border-radius: 30%;
+    border: 5px solid transparent;
+    width: 100px;
+}
+
+#piece-color .selection img:first-child {
+    border: 5px solid rgba(70, 214, 38, 1);
+}
+
+#piece-color .selection img:last-child {
+    border: 5px solid rgba(70, 214, 38, 0.4);
+}
+
+/* Selecionar Duração de tempo */
+.time-box div {
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    border: 2px solid rgba(70, 214, 38, 0.4);
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.time-box:nth-child(3) i {
+    background-color: rgba(70, 214, 38, 1);
+}
+
+.time-box:nth-child(3) div {
+    border: 2px solid rgba(70, 214, 38, 1);
+}
+
+/* nome do jogador */
+#player-name div input {
+    font-size: 10px;
+    font-weight: 900;
+    border-radius: 5px;
+    border: none;
+    color: #000000;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* play button */
+#play-btn {
+    background-color: rgb(59, 187, 31);
+    color: #ffff;
+    font-size: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    transition: all 0.5s;
+}
+
+/* -------------------------------------------Informação do jogador------------------------------------------- */
+.image-container img {
+    width: 100%;
+    border-radius: 50%;
+    border: 5px solid rgb(147, 166, 146);
+}
+
+.player-info {
+    color: #fff;
+}
+
+.player-info .username {
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: none !important;
+}
+
+.player-info .score {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: none !important;
+}
+
+/* estado do tempo de jogo */
+.timer-container {
+    background-color: rgb(0, 0, 0);
+}
+
+.timer {
+    font-size: 15px;
+    text-shadow: none !important;
+}
+
+
+/*---------------------------------- Sitio dos mortos -------------------------------------- */
+.dead-pieces-container {
+    background-color: rgb(37, 39, 37);
+}
+
+.dead-pieces-square {
+    height: 87px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 900;
+    background-image: radial-gradient(rgb(101, 190, 81), rgb(33, 104, 17));
+    border: 6px solid rgb(37, 39, 37);
+    border-radius: 20px;
+}
+
+/* --------------------------------------- Tabuleiro ---------------------------------------------- */
+#chess-board>div {
+    border: 5px solid rgb(37, 39, 37);
+    background-color: rgb(37, 39, 37);
+    cursor: pointer;
+}
+
+.square {
+    font-size: 20px;
+    line-height: 50px;
+    border: 5px solid rgb(37, 39, 37);
+    transition: 0.1s linear;
+    text-align: center;
+}
+
+#chess-board .chess-piece {
+    font-size: 30px; /* Define o tamanho da fonte das peças de xadrez para 30 pixels. Isso é útil quando as peças são representadas por caracteres ou ícones escaláveis. */
+    font-weight: bold; /* Deixa o texto das peças em negrito, o que pode ajudar a torná-las mais visíveis ou destacadas no tabuleiro. */
+    color: #000000; /* Define a cor do texto das peças de xadrez para preto. */
+    cursor: pointer; /* Muda o cursor para o estilo 'pointer' (mãozinha) quando o mouse passa sobre as peças, indicando que elas são interativas ou clicáveis. */
+    transition: transform 0.2s ease-in-out; /* Adiciona uma animação suave de transformação (como mover, girar) que ocorre em 0.2 segundos, usando um timing 'ease-in-out' para a aceleração e desaceleração da animação. Isso é usado para dar um feedback visual suave quando as peças são movidas ou interagidas. */
+}
+
+#chess-board .chess-piece.black {
+    color: #fff;
+    background-color: #000;
+}
+
+#chess-board .chess-piece:hover {
+    transform: scale(1.5); /* Aumenta o tamanho da peça de xadrez para 120% do seu tamanho original quando o mouse passa sobre ela. Este efeito é útil para indicar visualmente que a peça pode ser interagida ou está sob o foco do usuário. */
+}
+
+@media (min-width: 200px) {
+    #chess-board {
+        width: 100vw; /* Define a largura do tabuleiro de xadrez para ocupar 100% da largura da viewport. */
+    }
+}
+
+.square {
+    height: 110px !important; /* Define a altura das células do tabuleiro para 110 pixels, garantindo que esta regra tenha prioridade sobre outras possivelmente conflitantes devido ao uso de !important. */
+    max-height: 110px !important; /* Define a altura máxima das células do tabuleiro para 110 pixels, assegurando que elas não ultrapassem esse tamanho, independentemente do conteúdo, também com prioridade devido ao !important. */
+    font-size: 70px !important; /* Ajusta o tamanho da fonte para 70 pixels dentro das células, que pode ser útil para ícones ou caracteres representando as peças de xadrez, assegurando essa regra com !important. */
+    line-height: 100px !important; /* Define a altura da linha para 100 pixels, o que ajuda a centralizar verticalmente o texto ou ícones dentro da célula, usando !important para garantir a aplicação desta regra. */
+}
+
+    .setting-container {
+        width: 90vw; /* Define a largura do contêiner de configurações para ser igual a 90% da largura da viewport (área visível da tela). */
+        height: 90vw; /* Define a altura do contêiner de configurações para ser igual a 90% da largura da viewport, o que ajuda a manter a proporção do contêiner quadrada em telas que têm a largura como referência. */
+    }
+
+    .selection-box p {
+        font-size: 30px; /* Ajusta o tamanho da fonte dos parágrafos dentro das caixas de seleção para 30 pixels, tornando o texto mais legível e destacado. */
+    }
+    
+    #game-mode .selection div {
+        font-size: 24px; /* Define o tamanho da fonte para 24 pixels para as divisões dentro da seleção do modo de jogo, garantindo que as opções de jogo sejam claramente visíveis. */
+    }
+    
+    #piece-color .selection img {
+        width: 150px; /* Especifica a largura das imagens dentro da seleção de cor das peças para 150 pixels, padronizando o tamanho das representações visuais das cores das peças. */
+    }
+    
+    .time-box div {
+        font-size: 24px; /* Define o tamanho da fonte para as divisões dentro da caixa de tempo para 24 pixels, mantendo a consistência com outros elementos interativos. */
+        border: 4px solid rgba(70, 214, 38, 0.4); /* Adiciona uma borda sólida de 4 pixels com uma cor semi-transparente, destacando visualmente a caixa de seleção de tempo. */
+    }
+    
+    #player-name div input {
+        font-size: 24px; /* Ajusta o tamanho da fonte para os campos de entrada de nome do jogador para 24 pixels, melhorando a legibilidade. */
+        font-weight: 900; /* Aumenta o peso da fonte para 900 (extra-negrito), fazendo com que o texto inserido se destaque mais. */
+    }
+    
+    #play-btn {
+        font-size: 50px; /* Aumenta o tamanho da fonte do botão de jogar para 50 pixels, tornando-o mais proeminente e fácil de identificar. */
+        border-radius: 15px; /* Arredonda as bordas do botão com um raio de 15 pixels, suavizando seu design e melhorando a estética. */
+    }
+    
+    .dead-pieces {
+        max-height: 270px; /* Limita a altura máxima da área que mostra as peças capturadas a 270 pixels, controlando o espaço que ocupa na tela. */
+    }
+    
+    .dead-pieces-square {
+        height: 135px; /* Define a altura para as células que mostram as peças capturadas para 135 pixels, garantindo que sejam grandes o suficiente para visualizar claramente as peças mortas. */
+        font-size: 80px; /* Ajusta o tamanho da fonte para as peças mortas para 80 pixels, permitindo uma representação visual clara e distinta das peças capturadas. */
+        line-height: 100px; /* Define a altura da linha para 100 pixels, ajudando a centralizar verticalmente os ícones das peças dentro das células. */
+    }
+    
+    #chess-board {
+        max-height: 1200px; /* Define a altura máxima para o tabuleiro de xadrez em 1200 pixels, garantindo que ele se ajuste bem em diferentes tamanhos de tela. */
+    }
+    
+    .image-container img {
+        max-width: 140px; /* Restringe a largura máxima das imagens dentro dos contêineres de imagem a 140 pixels, mantendo a uniformidade das representações visuais dos jogadores. */
+    }
+    
+    .player-info .username, .player-info .score, .timer {
+        font-size: 30px; /* Unifica o tamanho da fonte para 30 pixels para os nomes dos usuários, suas pontuações e os temporizadores, facilitando a leitura dessas informações importantes. */
+    }
+    
+
+
+    @media (min-width: 992px) {
+        #chess-board {
+            height: 100vh; /* Define a altura do tabuleiro para ocupar 100% da altura da viewport. */
+            width: 100vh; /* Define a largura do tabuleiro para também ocupar 100% da altura da viewport, garantindo que o tabuleiro mantenha uma proporção quadrada. */
+        }
+
+
+        .square {
+            height: 63px !important; /* Define a altura de cada célula do tabuleiro para 63 pixels, garantindo que essa regra tenha precedência sobre outras devido ao uso do !important. */
+            max-height: 63px !important; /* Assegura que a altura máxima de cada célula não exceda 63 pixels, utilizando !important para priorizar essa configuração. */
+            font-size: 50px !important; /* Ajusta o tamanho da fonte para 50 pixels dentro de cada célula, útil para ícones ou caracteres que representam as peças de xadrez, com !important para assegurar aplicação. */
+            line-height: 50px !important; /* Define a altura da linha para 50 pixels, ajudando a centralizar verticalmente o conteúdo dentro das células, aplicado com !important para garantir a prioridade. */
+        }
+
+        .setting-container {
+            width: 60vw; /* Define a largura do contêiner de configurações para ser 60% da largura da viewport, permitindo que ele se ajuste de forma responsiva à largura da tela. */
+            height: 90vh; /* Define a altura do contêiner de configurações para ser 90% da altura da viewport, garantindo que utilize a maior parte da altura disponível de forma responsiva. */
+        }
+
+        .selection-box p {
+            line-height: 24px; /* Ajusta a altura da linha para 24 pixels, o que pode ajudar a melhorar a legibilidade do texto, garantindo espaço adequado entre linhas de texto. */
+            font-size: 12px; /* Define o tamanho da fonte dos parágrafos para 12 pixels, tornando o texto menor e possivelmente mais adequado para descrições ou instruções detalhadas que não precisam de tanto destaque. */
+        }
+
+        #game-mode .selection div {
+            font-size: 20px; /* Aumenta o tamanho da fonte para 20 pixels para as divisões dentro da área de seleção do modo de jogo, tornando as opções de jogo (como Local, IA ou Online) mais proeminentes e fáceis de selecionar. */
+        }
+
+        #piece-color .selection img {
+            width: 100px; /* Define a largura das imagens dentro da seleção de cor das peças para 100 pixels. Isso padroniza o tamanho das imagens que representam as opções de cores das peças, tornando-as mais consistentes e atraentes visualmente. */
+        }
+
+        .time-box div {
+            font-size: 20px; /* Aumenta o tamanho da fonte para 20 pixels dentro das divisões da caixa de tempo, melhorando a legibilidade das opções de duração do jogo disponíveis. */
+            border: 2px solid rgba(70, 214, 38, 0.4); /* Adiciona uma borda sólida de 2 pixels com cor semi-transparente, destacando visualmente as opções de tempo e adicionando um toque de design ao elemento. */
+        }
+
+        #player-name div input {
+            font-size: 20px; /* Define o tamanho da fonte para 20 pixels nos campos de entrada, garantindo que o texto digitado seja facilmente legível. */
+            font-weight: 900; /* Aumenta o peso da fonte para 900, tornando o texto digitado extra negrito. Isso ajuda a destacar a importância da entrada do nome do jogador, além de melhorar a visibilidade do texto. */
+        }
+
+        #play-btn {
+            font-size: 30px; /* Aumenta o tamanho da fonte para 30 pixels, tornando o texto no botão de jogar mais visível e acessível. */
+        }
+
+        .dead-pieces {
+            max-height: 100vh; /* Define a altura máxima da área que mostra as peças capturadas para 100% da altura da viewport, garantindo que ela se ajuste à tela sem causar rolagem. */
+        }
+
+        .dead-pieces-square {
+            height: 87px; /* Define a altura das células que mostram as peças capturadas para 87 pixels. */
+            font-size: 50px; /* Ajusta o tamanho da fonte (para ícones das peças, se aplicável) para 50 pixels, facilitando a identificação das peças capturadas. */
+            line-height: 70px; /* Estabelece a altura da linha para 70 pixels, ajudando a centralizar verticalmente o conteúdo dentro da célula. */
+        }
+
+        #chess-board {
+            max-height: 100vh; /* Limita a altura máxima do tabuleiro de xadrez a 100% da altura da viewport, garantindo que o tabuleiro se ajuste dentro da tela sem necessidade de rolagem vertical. */
+        }
+
+        .image-container img {
+            max-width: 100px; /* Restringe a largura máxima das imagens de perfil a 100 pixels, garantindo que as imagens não dominem a interface. */
+        }
+
+        .player-info .username,
+        .player-info .score,
+        .timer {
+            font-size: 15px; /* Reduz o tamanho da fonte para 15 pixels para nomes de utilizadores, pontuações e o temporizador, tornando esses elementos menos dominantes na interface. */
+        }
+
+}
+
+#second-player-input {
+    display: none; /* Define o campo de entrada para não ser exibido inicialmente na página. Isso é útil para esconder elementos que só devem aparecer em certas condições, como a escolha de jogar contra outra pessoa localmente. */
+    margin-top: 10px; /* Adiciona um espaçamento de 10 pixels na parte superior do elemento. Isso serve para garantir que, quando o campo for exibido, ele tenha um espaço adequado em relação aos elementos acima dele, evitando que a interface pareça amontoada. */
+}

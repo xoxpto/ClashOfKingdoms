@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASH OF KINGDOMS</title>
+    <link rel="stylesheet" href="chessCSS.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="chessJS.js"></script>
+    <!-- <style>
+        *{
+            border: 1px solid red;
+        }
+    </style> -->
+</head>
+<body>
+    <!-- Configurações e definições do jogo -->
+    <div class="setting-container row flex-wrap pt-5 px-3 m-0">
+
+        <!-- Seleção do modo de jogo -->
+        <div class="selection-box col-12 m-0" id="game-mode">
+            <div class="row">
+                <div class="col-5 p-0">
+                    <p>SELECIONAR MODO DE JOGO</p>
+                </div>
+                <div class="col-7">
+                    <div class="selection row justify-content-between">
+                        <div class="game-mode col-6">Local</div>
+                        <div class="game-mode ai col-6">Contra a IA</div>
+                        <div class="game-mode col-6">Online</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seleção da cor das peças -->
+        <div class="selection-box col-12 m-0" id="piece-color">
+            <div class="row">
+               <div class="col-5 p-0">
+                    <p>SELECIONAR COR DAS PEÇAS</p>
+               </div>
+               <div class="col-7">
+                    <div class="selection row justify-content-around">
+                        <div class="col-12">
+                            <img src="images/blackPiece.jpg" class="piece-color mr-4" alt="">
+                            <img src="images/whitePiece.jpg" class="piece-color" alt="">
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+        <!-- Seleção da duração do tempo de jogo -->
+        <div class="selection-box col-12 m-0 p-0" id="timer">
+            <div class="row p-0 m-0">
+                <div class="col-5 p-0">
+                    <p>SELECIONAR DURAÇÃO DO JOGO</p>
+                </div>
+               <div class="col-7">
+                    <div class="row">
+                        <div class="time-box col-3">
+                            <div class="p-1">01:00</div>
+                        </div>
+                        <div class="time-box col-3">
+                            <div class="p-1">05:00</div>
+                        </div>
+                        <div class="time-box col-3">
+                            <div class="p-1">10:00</div>
+                        </div>
+                        <div class="time-box col-3">
+                            <div class="p-1">30:00</div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+        <!-- Seleção do nome do jogador -->
+        <div class="selection-box col-12 p-0 m-0" id="player-name">
+            <div class="row p-0 m-0">
+                <div class="col-5 p-0">
+                    <P>NOME DO JOGADOR</P>
+                </div>
+                <div class="col-7">
+                    <input id="playerb-name" class="p-1 w-100" type="text" placeholder="Digite o seu nome">
+                
+        <!-- Campo de entrada para o segundo jogador -->
+        <div class="row p-0 m-0" id="second-player-input" style="display: none;">
+            <div class="col-5 p-0">
+                <P>NOME DO SEGUNDO JOGADOR</P>
+            </div>
+            <div class="col-7">
+                <input id="playerc-name" class="p-1 w-100" type="text" placeholder="Digite o nome do segundo jogador">
+            </div>
+        </div>
+</div>
+            </div>
+        </div>
+
+        <div class="col-12 py-3 text-center">
+            <button type="submit" class="text-center px-3" id="play-btn">JOGAR</button>
+        </div>
+    </div>
+
+
+        <!------------------------------------ container do jogo --------------------------------------->
+        <div class="game-container row vh-100 m-0">
+            <!-- peças mortas do oponente -->
+            <div class="dead-pieces col-sm-12 col-lg-3 bg-dark vh-lg-100">
+                <div class="dead-pieces-container row align-items-start vh-lg-100" id="whiteDead">
+                    <div class="col-lg-12 col-12 p-0">
+                        <div class="row m-0 p-0">
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                        </div>
+                    </div>
+
+                    <!-------- informação do jogador --------->
+                    <div class="col-lg-12 col-12 p-0">
+                        <div class="player-status playera row m-0 p-0">
+                            <div class="col-lg-9 col-sm-9 m-0 p-0">
+                                <div class="row m-0 p-0">
+                                    <figure class="col-4 p-2 m-0 image-container">
+                                        <img src="images/avatar1.jpg" class="w-100" alt="">
+                                    </figure>
+                                    <div class="col-8 player-info  my-sm-3 px-3">
+                                        <div class="username overflow-hidden text-white">AI BotX10</div>
+                                        <div class="score text-white">(0)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 m-0 p-2">
+                                <div class="timer-container">
+                                    <div class="timer text-white text-center" id="whiteTimer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!----------- chess board-------------->
+            <div id="chess-board" class="col-sm-12 col-lg-6 vh-lg-100 m-0 p-0 bg-dark">
+                <div class="row p-0 m-0">
+                    <!--primeira fila -->
+                    <div class="col-12 h-100">
+                        <div class="row">
+                            <div class="square col-16 "></div>
+                            <div class="square col-16 "></div>
+                            <div class="square col-16 "></div>
+                            <div class="square col-16 "></div>
+                            <div class="square col-16 "></div>
+                            <div class="square col-16 "></div>
+                            <div class="square col-16 "></div>
+                            <div class="square col-16 "></div>
+                        </div>
+                    </div> 
+                    <!--segunda fila --> 
+                    <div class="col-12"> 
+                        <div class="row"> 
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                        </div>
+                    </div> 
+                    <!--terceira fila --> 
+                    <div class="col-12"> 
+                        <div class="row"> 
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                        </div> 
+                    </div> 
+                    <!--quarta fila --> 
+                    <div class="col-12"> 
+                        <div class="row">
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                        </div>
+                    </div> 
+                    <!--quinta fila -->  
+                    <div class="col-12">
+                        <div class="row"> 
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                        </div>
+                    </div> 
+                    <!--sexta fila -->   
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                        </div>
+                    </div>
+                    <!-- setima fila --> 
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                        </div> 
+                    </div> 
+                    <!--oitava fila --> 
+                    <div class="col-12"> 
+                        <div class="row"> 
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                            <div class="square col-16"></div>
+                    </div>
+                    </div>
+                    <div class="col-12 text-center mt-3">
+                        <img src="images/logo.png" alt="Logo do Jogo" style="max-width: 200px; height: auto;" />
+                    </div>
+                </div>        
+            </div> 
+
+            <!-- peças mortas do jogador -->
+            <div class="dead-pieces col-sm-12 col-lg-3 bg-dark vh-lg-100">
+                <div class="dead-pieces-container row align-items-end vh-lg-100" id="blackDead">
+                    <div class="col-lg-12 col-sm-12 p-0">
+                        <div class="row m-0 p-0">
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                            <div class="dead-pieces-square col-lg-4 m-0 col-16"></div>
+                        </div>
+                    </div>
+
+                    <!-------- informação do jogador --------->
+                    <div class="col-lg-12 col-sm-12 p-0">
+                        <div class="player-status playerb row m-0 p-0">
+                            <div class="col-lg-9 col-sm-9 m-0 p-0">
+                                <div class="row m-0 p-0">
+                                    <figure class="col-4 p-2 m-0 image-container">
+                                        <img src="images/avatar2.jpg" class="w-100" alt="">
+                                    </figure>
+                                    <div class="col-8 player-info  my-sm-3 px-3">
+                                        <div class="username overflow-hidden text-white"></div>
+                                        <div class="score text-white">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 m-0 p-2">
+                                <div class="timer-container">
+                                    <div class="timer text-white text-center" id="blackTimer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
+
